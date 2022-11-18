@@ -1,0 +1,32 @@
+name: Pulls pre-compiled nuget and publishes them
+on:
+  push:
+    branches:
+      - master
+  repository_dispatch:
+    types: [TaleSpire-Modding-Pipelines/AutomationDlls]
+    
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Setup Nuget
+        uses: nuget/setup-nuget@v1
+
+      - name: Checkout
+        uses: actions/checkout@v2
+            
+      - name: Download artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{ secrets.dll_pat }}
+          workflow: build.yml
+          branch: master
+          path: .
+          repo: TaleSpire-Modding-Pipelines/AutomationDlls
+          
+      - name: Publish
+        run: |
+          ls
+          dotnet nuget push "BepinexDlls/TaleSpireBepInEx.5.4.10.nupkg"  --api-key YOUR_GITHUB_PAT --source "github"
+          dotnet nuget push "TaleSpireDlls/TaleSpire.0.0.1.nupkg"  --api-key YOUR_GITHUB_PAT --source "github"
