@@ -2,7 +2,7 @@ name: Pulls pre-compiled nuget and publishes them
 on:
   push:
     branches:
-      - master
+      - main
   repository_dispatch:
     types: [TaleSpire-Modding-Pipelines/AutomationDlls]
     
