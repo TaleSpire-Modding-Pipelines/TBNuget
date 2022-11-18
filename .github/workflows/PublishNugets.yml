@@ -28,5 +28,5 @@ jobs:
       - name: Publish
         run: |
           ls
-          dotnet nuget push "BepinexDlls/TaleSpireBepInEx.5.4.10.nupkg"  --api-key ${{ secrets.dll_pat }} --source "github"
-          dotnet nuget push "TaleSpireDlls/TaleSpire.0.0.1.nupkg"  --api-key ${{ secrets.dll_pat }} --source "github"
+          dotnet nuget push "dlls/BepinexDlls/TaleSpireBepInEx.5.4.10.nupkg"  --api-key ${{ secrets.dll_pat }} --source "github"
+          dotnet nuget push "dlls/TaleSpireDlls/TaleSpire.0.0.1.nupkg"  --api-key ${{ secrets.dll_pat }} --source "github"
