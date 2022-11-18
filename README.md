@@ -1,2 +1,2 @@
-# TBNuget
-TaleSpire and Bepinex Nuget
+# TaleSpire and Bepinex Nuget
+This repository exposes the private automation repository and packages the game dlls into a nugetpackage used for Bepinex plugin development. Reason for this is so that the dlls aren't exposed (directly) but packaged into a pseudo nuget SDK. The purpose of this is to allow the use of nugets streamline package management instead of being forced to always use dll references. With this implemented, it should reduce headaches for other mod developers.
