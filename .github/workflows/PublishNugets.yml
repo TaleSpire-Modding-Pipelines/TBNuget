@@ -26,18 +26,24 @@ jobs:
           repo: TaleSpire-Modding-Pipelines/AutomationDlls
           
           
-      - name: Deploy Bepinex DLL Nuget
-        uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
-        with:
-          nupkg-path:  './dlls/BepinexDlls/TaleSpireBepInEx.5.4.10.nupkg'
-          repo-owner:  'TaleSpire-Modding-Pipelines'
-          gh-user:  'HolloFox'
-          token:  ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish
+        run: |
+          dotnet nuget push "*.nupkg" \
+          --api-key ${{ secrets.GITHUB_TOKEN }} \
+          --source https://nuget.pkg.github.com/${{ github.repository_owner }}
+                    
+#       - name: Deploy Bepinex DLL Nuget
+#         uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
+#         with:
+#           nupkg-path:  './dlls/BepinexDlls/TaleSpireBepInEx.5.4.10.nupkg'
+#           repo-owner:  'TaleSpire-Modding-Pipelines'
+#           gh-user:  'HolloFox'
+#           token:  ${{ secrets.GITHUB_TOKEN }}
           
-      - name: Deploy TaleSpire DLL Nuget
-        uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
-        with:
-          nupkg-path:  './dlls/TaleSpireDlls/TaleSpire.0.0.1.nupkg'
-          repo-owner:  'TaleSpire-Modding-Pipelines'
-          gh-user:  'HolloFox'
-          token:  ${{ secrets.GITHUB_TOKEN }}
+#       - name: Deploy TaleSpire DLL Nuget
+#         uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
+#         with:
+#           nupkg-path:  './dlls/TaleSpireDlls/TaleSpire.0.0.1.nupkg'
+#           repo-owner:  'TaleSpire-Modding-Pipelines'
+#           gh-user:  'HolloFox'
+#           token:  ${{ secrets.GITHUB_TOKEN }}
