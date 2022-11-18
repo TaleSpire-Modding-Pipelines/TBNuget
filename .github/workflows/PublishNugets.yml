@@ -28,9 +28,7 @@ jobs:
           
       - name: Publish
         run: |
-          dotnet nuget push "*.nupkg" \
-          --api-key ${{ secrets.GITHUB_TOKEN }} \
-          --source https://nuget.pkg.github.com/${{ github.repository_owner }}
+          dotnet nuget push "*.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/${{ github.repository_owner }}
                     
 #       - name: Deploy Bepinex DLL Nuget
 #         uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
